@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" href="Main.html">
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="gr.css">
+    <link rel="icon" type="icon-survey" href="survey.png">
+    <style>
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .container {
+            animation: slideDown 0.5s ease-out;
+        }
+    </style>
+    
+</head>
+
+<body class="loaded">
+    <div class="container silde-down">
+        <h1>Student Survey Form</h1>
+        <form id="surveyForm" action="#">
+            <fieldset>
+                <legend>Personal Information</legend>
+                <div class="fg">
+                    <label for="fName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="fg">
+                    <label for="mName">Middle Name:</label>
+                    <input type="text" id="middleName" name="middleName">
+                </div>
+                <div class="fg">
+                    <label for="lName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <div class="fg">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="fg">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" required min="18">
+                </div>
+                <div class="fg">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="fg">
+                    <label for="school">School:</label>
+                    <input type="text" id="school" name="school" required>
+                </div>
+                <div class="fg">
+                    <label for="course">Course:</label>
+                    <input type="text" id="course" name="course" required>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Survey Questions</legend>
+                <div class="fg">
+                    <label for="acP">Academic Performance:</label><br>
+                    <select id="acP" name="acP" required>
+                        <option value="">Select</option>
+                        <option value="Excellent">Excellent</option>
+                        <option value="Good">Good</option>
+                        <option value="Average">Average</option>
+                        <option value="Below Average">Below Average</option>
+                    </select>
+                </div>
+                <div class="fg">
+                    <label for="pmS">Programming Skills:</label><br>
+                    <select id="pmS" name="pmS" required>
+                        <option value="">Select</option>
+                        <option value="Proficient">Proficient</option>
+                        <option value="Competent">Competent</option>
+                        <option value="Novice">Novice</option>
+                    </select>
+                </div>
+                <div class="fg">
+                    <label for="pC">Number of Projects Completed:</label>
+                    <input type="number" id="pC" name="pC" required min="0">
+                </div>
+                <div class="fg">
+                    <label for="careerPlans">Career Plans:</label><br>
+                    <select id="careerPlans" name="careerPlans" required onchange="checkCustomCareer()">
+                        <option value="">Select</option>
+                        <option value="Software Developer">Software Developer</option>
+                        <option value="Network Engineer">Network Engineer</option>
+                        <option value="Data Analyst">Data Analyst</option>
+                        <option value="IT Consultant">IT Consultant</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="fg" id="customCareerGroup" style="display: none;">
+                    <label for="customCareer">Custom Career Plan:</label>
+                    <input type="text" id="customCareer" name="customCareer">
+                </div>
+                <div class="fg">
+                    <label for="ctI">Current Internship:</label><br>
+                    <input type="radio" id="internshipYes" name="ctI" value="Yes" required>
+                    <label for="internshipYes">Yes</label><br>
+                    <input type="radio" id="internshipNo" name="ctI" value="No" required>
+                    <label for="internshipNo">No</label><br>
+                </div>
+                <div class="fg">
+                    <label for="ecA">Extracurricular Activities:</label>
+                    <textarea id="ecA" name="ecA" rows="4" cols="50"></textarea>
+                </div>
+                <div class="fg">
+                    <label for="aC">Additional Comments:</label>
+                    <textarea id="aC" name="aC" rows="4" cols="50"></textarea>
+                </div>
+            </fieldset>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+        </form>
+        <div id="successMessage" class="success-message">
+            <p>Thank you for Submitting the Survey</p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
+                window.location.href = "Main.html";
+            } else {
+                document.querySelector(".container").style.display = "block";
+            }
+        });
+    </script>
+    
+    <script src="script.js"></script>
+</body>
+
+</html>
